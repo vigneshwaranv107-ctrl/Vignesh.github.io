@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Vigneshwaran | Video Editor</title>
+  <meta name="description" content="Vigneshwaran - Video Editor and Graphic Designer. Portfolio, experience, skills and contact.">
+  <meta name="theme-color" content="#0b0b0f">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg: #0b0b0f;
+      --bg-soft: #14141b;
+      --card: #171720;
+      --line: #26262f;
+      --text: #ececf1;
+      --muted: #9a9aa8;
+      --accent: #8b7bff;
+      --accent-2: #ff7bb5;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: "Montserrat", Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    ul { list-style: none; }
+
+    .container { max-width: 1000px; margin: 0 auto; padding: 0 22px; }
+    section { padding: 90px 0; }
+
+    .eyebrow {
+      font-size: .8rem;
+      letter-spacing: .25em;
+      text-transform: uppercase;
+      color: var(--accent);
+      font-weight: 600;
+      margin-bottom: 10px;
+    }
+    h2 {
+      font-size: clamp(1.6rem, 4vw, 2.2rem);
+      font-weight: 600;
+      margin-bottom: 36px;
+    }
+
+    /* ---------- NAV ---------- */
+    nav {
+      position: sticky; top: 0; z-index: 50;
+      background: rgba(11, 11, 15, .85);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--line);
+    }
+    .nav-inner {
+      display: flex; align-items: center; justify-content: space-between;
+      height: 64px;
+    }
+    .logo { font-weight: 700; letter-spacing: .05em; }
+    .logo span { color: var(--accent); }
+    .nav-links { display: flex; gap: 26px; font-size: .85rem; color: var(--muted); }
+    .nav-links a { transition: color .2s; }
+    .nav-links a:hover { color: var(--text); }
+
+    /* ---------- HERO ---------- */
+    .hero { padding: 80px 0 70px; }
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 280px 1fr;
+      gap: 56px;
+      align-items: center;
+    }
+    .photo-wrap {
+      width: 280px; height: 280px;
+      border-radius: 50%;
+      padding: 5px;
+      background: linear-gradient(135deg, var(--accent), var(--accent-2));
+      box-shadow: 0 20px 60px rgba(139, 123, 255, .25);
+    }
+    .photo-wrap img, .photo-fallback {
+      width: 100%; height: 100%;
+      border-radius: 50%;
+      object-fit: cover;
+      background: var(--bg-soft);
+      display: block;
+    }
+    .photo-fallback {
+      display: none;
+      align-items: center; justify-content: center;
+      font-size: 4rem; font-weight: 700; color: var(--accent);
+    }
+    .hero h1 {
+      font-size: clamp(2.4rem, 7vw, 4.2rem);
+      font-weight: 500;
+      line-height: 1.1;
+      letter-spacing: -.01em;
+    }
+    .role {
+      margin-top: 14px;
+      font-size: 1.05rem;
+      letter-spacing: .3em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+    .hero p.lead { margin-top: 22px; max-width: 520px; color: var(--muted); }
+    .btn-row { margin-top: 30px; display: flex; flex-wrap: wrap; gap: 14px; }
+    .btn {
+      padding: 12px 26px;
+      border-radius: 999px;
+      font-size: .9rem; font-weight: 600;
+      border: 1px solid var(--line);
+      transition: transform .2s, background .2s, border-color .2s;
+    }
+    .btn:hover { transform: translateY(-2px); }
+    .btn.primary {
+      background: linear-gradient(135deg, var(--accent), var(--accent-2));
+      border: none; color: #0b0b0f;
+    }
+    .btn.ghost:hover { border-color: var(--accent); }
+
+    /* ---------- ABOUT ---------- */
+    .about-text { max-width: 720px; color: var(--muted); font-size: 1.05rem; }
+    .chips { margin-top: 28px; display: flex; flex-wrap: wrap; gap: 10px; }
+    .chip {
+      padding: 7px 16px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      font-size: .85rem;
+      background: var(--bg-soft);
+    }
+
+    /* ---------- TIMELINE ---------- */
+    .timeline { border-left: 2px solid var(--line); padding-left: 28px; }
+    .item { position: relative; margin-bottom: 36px; }
+    .item:last-child { margin-bottom: 0; }
+    .item::before {
+      content: "";
+      position: absolute; left: -37px; top: 8px;
+      width: 12px; height: 12px; border-radius: 50%;
+      background: var(--accent);
+      box-shadow: 0 0 0 5px var(--bg);
+    }
+    .item .date {
+      font-size: .78rem; letter-spacing: .15em;
+      text-transform: uppercase; color: var(--accent);
+    }
+    .item h3 { font-size: 1.15rem; font-weight: 600; margin-top: 4px; }
+    .item p { color: var(--muted); font-size: .95rem; }
+
+    .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; }
+
+    /* ---------- SKILLS ---------- */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+      gap: 18px;
+    }
+    .skill {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      padding: 24px 12px;
+      text-align: center;
+      transition: transform .25s, border-color .25s;
+    }
+    .skill:hover { transform: translateY(-6px); border-color: var(--accent); }
+    .skill .badge {
+      width: 58px; height: 58px;
+      margin: 0 auto 14px;
+      border-radius: 14px;
+      display: flex; align-items: center; justify-content: center;
+      font-weight: 700; font-size: 1.3rem;
+      color: var(--accent);
+      background: var(--bg-soft);
+      border: 2px solid var(--accent);
+    }
+    .skill span { font-size: .85rem; color: var(--muted); }
+
+    /* ---------- LISTS ---------- */
+    .simple-list li {
+      padding: 10px 0;
+      border-bottom: 1px solid var(--line);
+      color: var(--muted);
+    }
+    .simple-list li::before { content: "▹ "; color: var(--accent); }
+
+    /* ---------- PORTFOLIO / CONTACT ---------- */
+    .portfolio-card {
+      background: linear-gradient(135deg, rgba(139,123,255,.15), rgba(255,123,181,.1));
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      padding: 44px 30px;
+      text-align: center;
+    }
+    .portfolio-card p { color: var(--muted); margin: 10px 0 24px; }
+
+    .contact-list { display: grid; gap: 14px; max-width: 460px; }
+    .contact-list a {
+      display: flex; align-items: center; gap: 14px;
+      padding: 16px 20px;
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      transition: border-color .2s, transform .2s;
+    }
+    .contact-list a:hover { border-color: var(--accent); transform: translateX(4px); }
+    .contact-list .ic { font-size: 1.2rem; }
+    .contact-list small { display: block; color: var(--muted); font-size: .75rem; letter-spacing: .1em; text-transform: uppercase; }
+
+    footer {
+      text-align: center;
+      padding: 34px 0;
+      color: var(--muted);
+      font-size: .82rem;
+      border-top: 1px solid var(--line);
+    }
+
+    /* ---------- SCROLL REVEAL ---------- */
+    .reveal { opacity: 0; transform: translateY(28px); transition: opacity .7s ease, transform .7s ease; }
+    .reveal.show { opacity: 1; transform: none; }
+    @media (prefers-reduced-motion: reduce) {
+      .reveal { opacity: 1; transform: none; transition: none; }
+      html { scroll-behavior: auto; }
+    }
+
+    /* ---------- MOBILE ---------- */
+    @media (max-width: 820px) {
+      .hero-grid { grid-template-columns: 1fr; text-align: center; gap: 34px; }
+      .photo-wrap { margin: 0 auto; width: 220px; height: 220px; }
+      .hero p.lead { margin-left: auto; margin-right: auto; }
+      .btn-row { justify-content: center; }
+      .two-col { grid-template-columns: 1fr; gap: 50px; }
+      .nav-links { gap: 16px; font-size: .75rem; }
+      section { padding: 64px 0; }
+    }
+    @media (max-width: 480px) {
+      .nav-links a:nth-child(n+4) { display: none; }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- NAVIGATION -->
+  <nav>
+    <div class="container nav-inner">
+      <a href="#home" class="logo">VIGNESH<span>WARAN</span></a>
+      <div class="nav-links">
+        <a href="#about">About</a>
+        <a href="#experience">Experience</a>
+        <a href="#skills">Skills</a>
+        <a href="#portfolio">Portfolio</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <header class="hero" id="home">
+    <div class="container hero-grid">
+      <div class="photo-wrap">
+        <!-- Put your photo in the same folder and name it photo.jpg -->
+        <img src="photo.jpg" alt="Vigneshwaran"
+             onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+        <div class="photo-fallback">V</div>
+      </div>
+
+      <div>
+        <h1>Vigneshwaran</h1>
+        <p class="role">Video Editor</p>
+        <p class="lead">Video editor with strong graphic design skills, creating YouTube content, wedding films and AI-generated videos.</p>
+        <div class="btn-row">
+          <a class="btn primary" href="https://www.behance.net/vigneshvicky217" target="_blank" rel="noopener">View my work</a>
+          <a class="btn ghost" href="#contact">Contact me</a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="container reveal">
+      <p class="eyebrow">My Profile</p>
+      <h2>About me</h2>
+      <p class="about-text">
+        I'm an enthusiastic, aspiring video editor with strong graphic design skills. I have proved my skills and abilities in the past while working for various clients. I adapt easily, learn by myself, and always give my best to deliver the best product.
+      </p>
+      <div class="chips">
+        <span class="chip">Video Editing</span>
+        <span class="chip">Graphic Designing</span>
+        <span class="chip">AI Generation</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- EXPERIENCE + EDUCATION -->
+  <section id="experience" style="background: var(--bg-soft);">
+    <div class="container two-col">
+      <div class="reveal">
+        <p class="eyebrow">Experience</p>
+        <h2>Where I've worked</h2>
+        <div class="timeline">
+          <div class="item">
+            <div class="date">May 2025 - Present</div>
+            <h3>Freelance Video Editor</h3>
+            <p>YouTube &amp; Wedding Events</p>
+          </div>
+          <div class="item">
+            <div class="date">Mar 2026 - Apr 2026</div>
+            <h3>AI Video Editor</h3>
+            <p>Official editor of "choreographer_sridhar"</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="reveal">
+        <p class="eyebrow">Education</p>
+        <h2>What I've studied</h2>
+        <div class="timeline">
+          <div class="item">
+            <div class="date">2022 - 2025</div>
+            <h3>BCA</h3>
+            <p>Dr.M.G.R. Chockalingam Arts &amp; Science</p>
+          </div>
+          <div class="item">
+            <div class="date">2025 - 2026</div>
+            <h3>Graphic Design</h3>
+            <p>Image Creative Education</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SKILLS -->
+  <section id="skills">
+    <div class="container reveal">
+      <p class="eyebrow">Skills</p>
+      <h2>Tools I use</h2>
+      <div class="skills-grid">
+        <div class="skill"><div class="badge">Ps</div><span>Photoshop</span></div>
+        <div class="skill"><div class="badge">Ai</div><span>Illustrator</span></div>
+        <div class="skill"><div class="badge">Pr</div><span>Premiere Pro</span></div>
+        <div class="skill"><div class="badge">Ae</div><span>After Effects</span></div>
+        <div class="skill"><div class="badge">Lr</div><span>Lightroom</span></div>
+        <div class="skill"><div class="badge">AI</div><span>Gemini</span></div>
+      </div>
+
+      <div class="two-col" style="margin-top: 60px;">
+        <div>
+          <p class="eyebrow">Area of Interest</p>
+          <ul class="simple-list">
+            <li>Video Editing</li>
+            <li>Graphic Designing</li>
+            <li>AI Generation</li>
+          </ul>
+        </div>
+        <div>
+          <p class="eyebrow">Languages</p>
+          <ul class="simple-list">
+            <li>Tamil</li>
+            <li>English</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PORTFOLIO -->
+  <section id="portfolio" style="background: var(--bg-soft);">
+    <div class="container reveal">
+      <div class="portfolio-card">
+        <p class="eyebrow">Portfolio</p>
+        <h2 style="margin-bottom:0;">See my work on Behance</h2>
+        <p>Video edits, graphic design and creative projects.</p>
+        <a class="btn primary" href="https://www.behance.net/vigneshvicky217" target="_blank" rel="noopener">Open portfolio</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="container reveal">
+      <p class="eyebrow">Contact</p>
+      <h2>Let's work together</h2>
+      <div class="contact-list">
+        <a href="tel:+917604805221">
+          <span class="ic">📞</span>
+          <div><small>Phone</small>7604805221</div>
+        </a>
+        <a href="mailto:Vigneshwaranv107@gmail.com">
+          <span class="ic">✉️</span>
+          <div><small>Email</small>Vigneshwaranv107@gmail.com</div>
+        </a>
+        <!-- Replace the link below with your real LinkedIn profile URL -->
+        <a href="https://www.linkedin.com/in/YOUR-LINKEDIN-ID" target="_blank" rel="noopener">
+          <span class="ic">💼</span>
+          <div><small>LinkedIn</small>vignesh waran</div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    © <span id="year"></span> Vigneshwaran. All rights reserved.
+  </footer>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    // Fade-in on scroll
+    const items = document.querySelectorAll(".reveal");
+    if ("IntersectionObserver" in window) {
+      const io = new IntersectionObserver((entries) => {
+        entries.forEach(e => {
+          if (e.isIntersecting) { e.target.classList.add("show"); io.unobserve(e.target); }
+        });
+      }, { threshold: 0.12 });
+      items.forEach(el => io.observe(el));
+    } else {
+      items.forEach(el => el.classList.add("show"));
+    }
+  </script>
+</body>
+</html>
